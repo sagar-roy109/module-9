@@ -17,15 +17,17 @@ class ProfileController extends Controller
         $data = array(
             "id" => $id,
             "name"=> $name,
-            "age"=> $age
-        )
+            "age"=> $age,
+        );
 
         $cookie_name = "access_token";
         $value = "123-XYZ";
         $exp = 1;
         $path = "/";
-        $doman = $_SERVER['SERVER_NAME'];
+        $domain = $_SERVER['SERVER_NAME'];
+        $secure = false;
+        $httpOnly = true;
 
-        return response("Hello {$id}");
+        return response($data, 200)->cookie($cookie_name,$value,$exp,$path, $domain, $secure, $httpOnly);
     }
 }
